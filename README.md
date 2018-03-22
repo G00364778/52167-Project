@@ -2,7 +2,7 @@
 # 52167-Project
 GMIT Programming and scripting project 2018
 
-[Project description document](doc\GMIT_Project_Description.pdf)
+[Project description document](doc/GMIT_Project_Description.pdf)
 
 ## To be completed
 
