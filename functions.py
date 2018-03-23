@@ -3,7 +3,7 @@
 # GMIT 52167 Final Project
 
 """
-
+https://www.math.umd.edu/~petersd/666/html/iris_pca.html
 """
 
 # 1. sepal length in cm 
