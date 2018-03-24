@@ -16,38 +16,28 @@ https://www.math.umd.edu/~petersd/666/html/iris_pca.html
 # -- Iris Virginica
 
 # 6.7,3.0,5.2,2.3,Iris-virginica
-# 6.3,2.5,5.0,1.9,Iris-virginica
-# 6.5,3.0,5.2,2.0,Iris-virginica
-# 6.2,3.4,5.4,2.3,Iris-virginica
-# 5.9,3.0,5.1,1.8,Iris-virginica
 
 import numpy as np
-
-def makefloat(teststr):
-    """
-    Convert strings containing numbers into floatingpoint values,otherwise return the string as is.
-    
-    return 
-        a tring
-        or a float
-    """
-    try:
-        return float(teststr) # return a floating point value if possibe.
-    except:
-        return teststr # otherwise return the string as is
-
+from matplotlib import pyplot as pl
+import csv
+from sklearn.preprocessing import normalize as norm
 
 with open(r'data\iris.data') as file:
-    datArr=[]
-    for line in file:
-        data=line.strip().split(',') # strip the newlines and spaces from the line and split on commas
-        data = [makefloat(i) for i in data] # convert the number strings to floating point values
-        if len(data)>1: # check for empty lines and skip
-            #print(data,len(data))
-            datArr.append(data)
+    line=csv.reader(file)
+    data=list(line)
 
-npDat=np.asarray(datArr)
-np.sp
-print(npDat)
-
-
+data.pop()#pop the empty line from the csv file read
+data=np.asarray(data)#create a numpy array to work with
+data=data[0::,0:4].astype(float).transpose()#convert all numbers to floats and transpose the set
+#print(data)
+data_n=norm(data-np.mean(data))
+x=0
+y=3
+set=data
+pl.plot(set[x,0:50],set[y,0:50],'ro',set[x,50:100],set[y,50:100],'go',set[x,100:150],set[y,100:150],'bo')
+pl.savefig('pl1.jpg')
+pl.close()
+set=data_n
+pl.plot(set[x,0:50],set[y,0:50],'ro',set[x,50:100],set[y,50:100],'go',set[x,100:150],set[y,100:150],'bo')
+pl.savefig('pl2.jpg')
+pl.close()
