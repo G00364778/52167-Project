@@ -80,3 +80,8 @@ Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relat
 1. [Sir Ronal Fisher - British statistition and genetecist](https://en.wikipedia.org/wiki/Ronald_Fisher)
 1. [Iris data set](https://archive.ics.uci.edu/ml/datasets/iris) from the UCI Machine Learning Repository. Irvine, CA: University of California, School of Information and Computer Science.
 1. [Example for Principal Component Analysis (PCA): Iris data](https://www.math.umd.edu/~petersd/666/html/iris_pca.html)
+1. [Statistical methods](https://www.encyclopedia.com/computing/dictionaries-thesauruses-pictures-and-press-releases/statistical-methods)
+1. [Skewness and Kurtosis](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm)
+1. [Kurtosis](https://en.wikipedia.org/wiki/Kurtosis)
+1. [SciPy Statistical reference](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html)
+
