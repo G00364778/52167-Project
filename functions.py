@@ -3,58 +3,87 @@
 # GMIT 52167 Final Project
 
 """
-https://www.math.umd.edu/~petersd/666/html/iris_pca.html
-"""
-
 # 1. sepal length in cm 
 # 2. sepal width in cm 
 # 3. petal length in cm 
 # 4. petal width in cm 
 # 5. class: 
-# -- Iris datasetosa 
+# -- Iris Setosa 
 # -- Iris Versicolour 
 # -- Iris Virginica
 
 # 6.7,3.0,5.2,2.3,Iris-virginica
-
+"""
 import numpy as np
 from matplotlib import pyplot as pl
 import csv
 from sklearn.preprocessing import normalize as norm
+import os
+from scipy import stats
 
-with open(r'data\iris.data') as file:
-    line=csv.reader(file)
-    data=list(line)
+setnames=['sepl','sepw','petl','petw']
+setlabels=['Sepal Length','Sepal Width','Petal Length','Petal Width']
+species=['Setosa','Versicolour','Virginica']
 
-data.pop()#pop the empty line from the csv file read
-data=np.asarray(data)#create a numpy array to work with
-data=data[0::,0:4].astype(float).transpose()#convert all numbers to floats and transpose the dataset
-#data_o=np.copy(data)#create a copy before average and normalise for comparison
-print('floated and transposed')
-print(data[0,0:5])
-print(data[1,0:5])
-#exit()
-#step through the datadataset and subtract the average value from the dataset
-for d in range(0,4):#loop through the four datasets
-    for i in range(0,101,50): # loop through the 3 types in datasets
-        start=i
-        stop=i+50
-        data[d,start:stop]=data[d,start:stop]+np.median(data[d,start:stop])
-print('subrtact mean')
-print(data[0,0:5])
-print(data[1,0:5])
-print('normalised')
-#data=norm(data)
-print(data[0,0:5])
-print(data[1,0:5])
-#exit()
-x=0
-y=3
-dataset=data_o
-pl.plot(dataset[x,0:50],dataset[y,0:50],'ro',dataset[x,50:100],dataset[y,50:100],'go',dataset[x,100:150],dataset[y,100:150],'bo')
-pl.savefig(r'pl1.jpg')
-pl.close()
-dataset=data
-pl.plot(dataset[x,0:50],dataset[y,0:50],'ro',dataset[x,50:100],dataset[y,50:100],'go',dataset[x,100:150],dataset[y,100:150],'bo')
-pl.savefig(r'pl2.jpg')
-pl.close()
+def read_csv_datafile(datafile=r'data\iris.data'):
+    """
+    Read the csv data file passed in to the fucntion, parse the data values from the file,
+    create a numpy array of floats and transpose them to a format useable in further statistical 
+    processing and graphing in array format.
+
+    return value - numpy array of 4 x 50 floatingpoint values
+    """
+    with open(datafile) as file:
+        line=csv.reader(file)
+        data=list(line)
+
+    data.pop()#pop the empty line from the csv file read
+    data=np.asarray(data)#create a numpy array to work with
+    data=data[0::,0:4].astype(float).transpose()#convert all numbers to floats and transpose the data
+    return data
+
+def creat_xy_plots(dataset, species_in_set=3):
+    """
+    Create a plot from the dataset passed in. 
+
+    Imputs: dataset - the numpy array with sampe data retrieved in 'read_csv_datafile'
+            specied in set - default of 3 onless specified
+
+    Outputs: generating plot images in the 'plots' subfolder
+    """
+    cols,samples=np.shape(dataset) # retrieve the columns and samples from the set passed in
+    b=[i for i in range(0,(samples+(samples//species_in_set)),(samples//species_in_set))] # calculate boundaries
+    #print(b) # [0, 50, 100, 150]
+    for x in range(cols):
+        for y in range(x,cols):
+            if x!=y:
+                #print(x,y)
+                Set,Ver,Vir=pl.plot(dataset[x,b[0]:b[1]],data[y,b[0]:b[1]],'ro',dataset[x,b[1]:b[2]],dataset[y,b[1]:b[2]],'go',dataset[x,b[2]:b[3]],dataset[y,b[2]:b[3]],'bo')
+                pl.title('Iris plot by species - {} x {}'.format(setlabels[x],setlabels[y]))
+                pl.legend((Set,Ver,Vir),species)
+                pl.xlabel('{}(cm)'.format(setlabels[x]))
+                pl.ylabel('{}(cm)'.format(setlabels[y]))
+                filename='plots\\iris_plt_{}_{}.png'.format(setnames[x],setnames[y])
+                os.makedirs(os.path.dirname(filename),mode=0o777,exist_ok=True)
+                pl.savefig(filename)
+                pl.close()
+
+data=read_csv_datafile()
+#creat_xy_plots(data)
+
+cols,samples=np.shape(data) # retrieve the columns and samples from the set passed in
+stat=[]
+
+for i in range(cols):
+    stat.append(stats.describe(data[i]))#collect the stats
+for i in range (len(setlabels)):
+    print('\t|{}'.format(setlabels[i]),sep='', end='')
+print('\n')
+#myarr=np.asarray(stat)
+for i in range(cols):
+    #print
+    nobsv, minmaxv, meanv, variancev, skewv, kurtosisv = stat[i]
+    minv,maxv=minmaxv
+    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(nobsv, minv, maxv, meanv, variancev, skewv, kurtosisv),sep='',end='')
+
+
