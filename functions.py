@@ -11,7 +11,7 @@ https://www.math.umd.edu/~petersd/666/html/iris_pca.html
 # 3. petal length in cm 
 # 4. petal width in cm 
 # 5. class: 
-# -- Iris Setosa 
+# -- Iris datasetosa 
 # -- Iris Versicolour 
 # -- Iris Virginica
 
@@ -28,16 +28,33 @@ with open(r'data\iris.data') as file:
 
 data.pop()#pop the empty line from the csv file read
 data=np.asarray(data)#create a numpy array to work with
-data=data[0::,0:4].astype(float).transpose()#convert all numbers to floats and transpose the set
-#print(data)
-data_n=norm(data-np.mean(data))
+data=data[0::,0:4].astype(float).transpose()#convert all numbers to floats and transpose the dataset
+#data_o=np.copy(data)#create a copy before average and normalise for comparison
+print('floated and transposed')
+print(data[0,0:5])
+print(data[1,0:5])
+#exit()
+#step through the datadataset and subtract the average value from the dataset
+for d in range(0,4):#loop through the four datasets
+    for i in range(0,101,50): # loop through the 3 types in datasets
+        start=i
+        stop=i+50
+        data[d,start:stop]=data[d,start:stop]+np.median(data[d,start:stop])
+print('subrtact mean')
+print(data[0,0:5])
+print(data[1,0:5])
+print('normalised')
+#data=norm(data)
+print(data[0,0:5])
+print(data[1,0:5])
+#exit()
 x=0
 y=3
-set=data
-pl.plot(set[x,0:50],set[y,0:50],'ro',set[x,50:100],set[y,50:100],'go',set[x,100:150],set[y,100:150],'bo')
-pl.savefig('pl1.jpg')
+dataset=data_o
+pl.plot(dataset[x,0:50],dataset[y,0:50],'ro',dataset[x,50:100],dataset[y,50:100],'go',dataset[x,100:150],dataset[y,100:150],'bo')
+pl.savefig(r'pl1.jpg')
 pl.close()
-set=data_n
-pl.plot(set[x,0:50],set[y,0:50],'ro',set[x,50:100],set[y,50:100],'go',set[x,100:150],set[y,100:150],'bo')
-pl.savefig('pl2.jpg')
+dataset=data
+pl.plot(dataset[x,0:50],dataset[y,0:50],'ro',dataset[x,50:100],dataset[y,50:100],'go',dataset[x,100:150],dataset[y,100:150],'bo')
+pl.savefig(r'pl2.jpg')
 pl.close()
