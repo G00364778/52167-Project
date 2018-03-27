@@ -8,8 +8,8 @@ GMIT Programming and scripting project 2018
 
 - [x] Research background information about the data set and write a summary about it.
 - [ ] Keep a list of references you used in completing the project.
-- [X] Download the data set and write some Python code to investigate it.
-- [ ] Summarise the data set by, for example, calculating the maximum, minimum and mean of each column of the data set. A Python script will quickly do this for you.
+- [x] Download the data set and write some Python code to investigate it.
+- [x] Summarise the data set by, for example, calculating the maximum, minimum and mean of each column of the data set. A Python script will quickly do this for you.
 - [ ] Write a summary of your investigations.
 - [ ] Include supporting tables and graphics as you deem necessary.
 
@@ -23,6 +23,7 @@ The raw dataset is available from various sources online but the main set for th
 The dataset consists of 150 instances of three classes with 4 attributes for every class.
 
 Attribute Information:
+
 1. sepal length in cm
 1. sepal width in cm
 1. petal length in cm
@@ -46,14 +47,20 @@ A Matlab paper published by D Peters(referenced) suggested normalising the datas
 Samples from this process yielded the following:
 
 Original set - floated and transposed
+```python
 [ 5.1  4.9  4.7  4.6  5. ]
 [ 3.5  3.   3.2  3.1  3.6]
+```
 subrtact mean of subsets by species
+```python
 [ 0.094 -0.106 -0.306 -0.406 -0.006]
 [ 0.082 -0.418 -0.218 -0.318  0.182]
+```
 normalise the entire set
+```python
 [ 0.01506051 -0.01698312 -0.04902675 -0.06504857 -0.00096131]
 [ 0.01986748 -0.10127569 -0.05281842 -0.07704706  0.04409611]
+```
 
 The result of the normalisation process eliminated all the seperations in the sets. Another idea was calculating the products of the length and width results in order to evaluate seperation, however no better results were produced as seen in the single set paramaters.
 
@@ -68,11 +75,55 @@ The best sets were produced by:
 
 ### Analysing the datasets
 
+Reviewing the data sets through statistical analyses a very handy library and feature was found in [SciPy][1].stats function. A single function call wraps all the handy statistics into a sinle function call.
+
+Statistic|Sepal Length|Sepal Width|Petal Length|Petal Width
+---------|:----------:|:---------:|:----------:|:-----------:
+**nobs**|150.000|150.000|150.000|150.000
+**min**|4.300|2.000|1.000|0.100
+**max**|7.900|4.400|6.900|2.500
+**mean**|5.843|3.054|3.759|1.199
+**variance**|0.686|0.188|3.113|0.582
+**skewness**|0.312|0.331|-0.272|-0.104
+**kurtosis**|-0.574|0.241|-1.395|-1.335
+
+* nobs  - number of objects in set
+* min   - the minimum values in the set
+* max   - the maximum values in the set
+* mean  - the mean(average) of the set
+* var   - the variance or standard deviation in the set
+* skew  - the skewness indicating the lack of symmetry, symmetric if it looks the same to the left and right of the center point.
+* kurt  - the kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. 
+
+So from the results in the analyses it seems to suggest that the datasets are well within the boundries of analyses and do not require nromalisation and should produce meaningfull results,
+
+### Skewness and Kurtoses 
+
 Skewness is a measure of symmetry, or more precisely, the lack of symmetry. A distribution, or data set, is symmetric if it looks the same to the left and right of the center point. 
 
 Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. That is, data sets with high kurtosis tend to have heavy tails, or outliers. Data sets with low kurtosis tend to have light tails, or lack of outliers. A uniform distribution would be the extreme case. 
 
+## Using Python as a tool for data analyses
 
+The python code usied in this excercise in contained in the GitHub repository as [functions.py][2] The three functions developed for this excercise are:
+
+* read_csv_datafile(datafile='data\\iris.data')
+* calc_stats(data, screenprint=False)
+* creat_xy_plots(dataset, species_in_set=3)
+
+The functions are called from the [iris.py][3] code to execute the three functions.
+
+```python
+import functions as f
+
+data = f.read_csv_datafile(r'data/iris.data')
+f.creat_xy_plots(data)
+stat=f.calc_stats(data, screenprint=True)
+```
+
+The first functions reads the csv data and returns in in numpy array format ready for pyplot graphing and numpy or scipy statistical analyses libraries.
+
+The second funtion generates x,y scatter plots and stires them in the [plots][4] subfolder
 
 ## List of references
 1. [Wikipedia - Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)
@@ -84,4 +135,9 @@ Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relat
 1. [Skewness and Kurtosis](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm)
 1. [Kurtosis](https://en.wikipedia.org/wiki/Kurtosis)
 1. [SciPy Statistical reference](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html)
+1. [Interpretation of statistical data](https://blog.udemy.com/interpretation-of-data/)
 
+[1]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html
+[2]: functions.py
+[3]: iris.ph
+[4]: /plots
