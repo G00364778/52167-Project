@@ -136,6 +136,8 @@ The second funtion generates x,y scatter plots and stires them in the [plots][4]
 1. [Kurtosis](https://en.wikipedia.org/wiki/Kurtosis)
 1. [SciPy Statistical reference](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html)
 1. [Interpretation of statistical data](https://blog.udemy.com/interpretation-of-data/)
+1. [Parametric and Non-parametric tests for comparing two or more groups 
+](https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1b-statistical-methods/parametric-nonparametric-tests)
 
 [1]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html
 [2]: functions.py
