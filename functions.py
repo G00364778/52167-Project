@@ -128,7 +128,19 @@ def calc_stats (data, screenprint=False):
         print('+-------+---------------+---------------+---------------+---------------+')
     return st
 
-#data=read_csv_datafile()
+def plot_hist(data,action='view'): # pass view of save for actions
+    for i in range(len(data)):
+        pl.hist(data[i])
+        pl.ylabel(setlabels[i])
+        if action == 'view':
+            pl.show()
+        elif action == 'save':
+            filename='plots\\iris_hist_{}.png'.format(setnames[i])
+            os.makedirs(os.path.dirname(filename),mode=0o777,exist_ok=True)
+            pl.savefig(filename)
+            pl.close()
+
+data=read_csv_datafile()
 #creat_xy_plots(data)
 #stat=calc_stats(data, screenprint=True)
-#print(stat)
+plot_hist(data,action='save')

@@ -5,5 +5,6 @@
 import functions as f
 
 data = f.read_csv_datafile(r'data/iris.data')
-f.creat_xy_plots(data)
-stat=f.calc_stats(data, screenprint=True)
+#f.creat_xy_plots(data)
+#stat=f.calc_stats(data, screenprint=True)
+f.plot_hist(data,action='file')
