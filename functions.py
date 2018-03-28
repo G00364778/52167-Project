@@ -140,7 +140,7 @@ def plot_hist(data,action='view'): # pass view of save for actions
             pl.savefig(filename)
             pl.close()
 
-data=read_csv_datafile()
+#data=read_csv_datafile()
 #creat_xy_plots(data)
 #stat=calc_stats(data, screenprint=True)
-plot_hist(data,action='save')
+#plot_hist(data,action='save')
