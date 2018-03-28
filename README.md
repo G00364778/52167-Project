@@ -31,7 +31,7 @@ Attribute Information:
 1. sepal width in cm
 1. petal length in cm
 1. petal width in cm
-1. class: 
+1. class:
    1. Iris Setosa
    1. Iris Versicolour
    1. Iris Virginica
@@ -46,7 +46,7 @@ So a petal is the obvious that most of us know from regular flowers and the sepa
 
 ### Graphing the data
 
-A Matlab paper published by D Peters(referenced) suggested normalising the data sets for improved results.
+A Mat lab paper published by D Peters(referenced) suggested normalising the data sets for improved results.
 
 Samples from this process yielded the following:
 
@@ -103,7 +103,7 @@ Statistic|Sepal Length|Sepal Width|Petal Length|Petal Width
 - mean  - the mean(average) of the set
 - var   - the variance or standard deviation in the set
 - skew  - the skewness indicating the lack of symmetry, symmetric if it looks the same to the left and right of the centre point.
-- kurt  - the kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. 
+- kurt  - the kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution.
 
 So from the results in the analyses it seems to suggest that the data sets are well within the boundaries of analyses and do not require normalisation and should produce meaningful results.
 
@@ -121,9 +121,9 @@ So the aim was to look at the histograms derived from the data sets, using the [
 
 ### Skewness and Kurtoses
 
-Skewness is a measure of symmetry, or more precisely, the lack of symmetry. A distribution, or data set, is symmetric if it looks the same to the left and right of the centre point. 
+Skewness is a measure of symmetry, or more precisely, the lack of symmetry. A distribution, or data set, is symmetric if it looks the same to the left and right of the centre point.
 
-Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. That is, data sets with high kurtosis tend to have heavy tails, or outliers. Data sets with low kurtosis tend to have light tails, or lack of outliers. A uniform distribution would be the extreme case. 
+Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. That is, data sets with high kurtosis tend to have heavy tails, or outliers. Data sets with low kurtosis tend to have light tails, or lack of outliers. A uniform distribution would be the extreme case.
 
 ## Using Python as a tool for data analyses
 
@@ -151,17 +151,16 @@ The second function generates x,y scatter plots and stores them in the [plots][4
 
 1. [Wikipedia - Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)
 1. [Iris Setosa - classification details](https://alchetron.com/Iris-setosa)
-1. [Sir Ronal Fisher - British statistition and genetecist](https://en.wikipedia.org/wiki/Ronald_Fisher)
-1. [Iris data set](https://archive.ics.uci.edu/ml/data sets/iris) from the UCI Machine Learning Repository. Irvine, CA: University of California, School of Information and Computer Science.
+1. [Sir Ronal Fisher - British statistician and geneticist](https://en.wikipedia.org/wiki/Ronald_Fisher)
+1. [Iris data set](https://archive.ics.uci.edu/ml/datasets/iris) from the UCI Machine Learning Repository. Irvine, CA: University of California, School of Information and Computer Science.
 1. [Example for Principal Component Analysis (PCA): Iris data](https://www.math.umd.edu/~petersd/666/html/iris_pca.html)
 1. [Statistical methods](https://www.encyclopedia.com/computing/dictionaries-thesauruses-pictures-and-press-releases/statistical-methods)
 1. [Skewness and Kurtosis](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm)
 1. [Kurtosis](https://en.wikipedia.org/wiki/Kurtosis)
 1. [SciPy Statistical reference](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html)
 1. [Interpretation of statistical data](https://blog.udemy.com/interpretation-of-data/)
-1. [Parametric and Non-parametric tests for comparing two or more groups 
-](https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1b-statistical-methods/parametric-nonparametric-tests)
-1. [Using histograms to graphically summerise distribution](https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm)
+1. [Parametric and Non-parametric tests for comparing two or more groups](https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1b-statistical-methods/parametric-nonparametric-tests)
+1. [Using histograms to graphically summarise distribution](https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm)
 1. [Histograms on Wikipedia](https://en.wikipedia.org/wiki/Histogram)
 
 [1]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.describe.html
