@@ -26,7 +26,7 @@ The csv read returns this sampe: # 6.7,3.0,5.2,2.3,Iris-virginica
 import numpy as np
 from matplotlib import pyplot as pl
 import csv
-# from sklearn.preprocessing import normalize as norm # not used, but kep for reference
+# from sklearn.preprocessing import normalize as norm # not used, but kept for reference
 import os
 from scipy import stats
 
