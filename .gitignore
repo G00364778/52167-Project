@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+_config.yml 
 
 # C extensions
 *.so
@@ -99,5 +100,3 @@ ENV/
 
 # mypy
 .mypy_cache/
-.vscode/launch.json
-.gitignore
